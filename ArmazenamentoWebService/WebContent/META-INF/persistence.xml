@@ -1,0 +1,54 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	
+	<persistence-unit name="cliente">
+	<!-- provedor/implementacao do JPA -->
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<!-- entidade mapeada -->
+		<class>entidades.EntCliente</class>
+		<class>entidades.EntCompra</class>
+		<class>entidades.EntFabricante</class>
+		<class>entidades.EntPeca</class>
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		
+		<properties>
+			<!-- dados da conexao -->
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/autopecas" />
+			<property name="javax.persistence.jdbc.user" value="ezeqroot" />
+			<property name="javax.persistence.jdbc.password" value="Fz747FORMIGA" />
+
+			<!-- opcoes eclipselink -->			
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+      		<property name="eclipselink.ddl-generation.output-mode" value="database" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="pecas">
+	<!-- provedor/implementacao do JPA -->
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<!-- entidade mapeada -->
+		<class>entidades.EntCliente</class>
+		<class>entidades.EntCompra</class>
+		<class>entidades.EntFabricante</class>
+		<class>entidades.EntPeca</class>
+		
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		
+		<properties>
+			<!-- dados da conexao -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/autopecas" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="Fz747FORMIGA" />
+
+			<!-- opcoes eclipselink -->			
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+      		<property name="eclipselink.ddl-generation.output-mode" value="database" />
+		</properties>
+	</persistence-unit>
+</persistence>
