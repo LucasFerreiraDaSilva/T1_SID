@@ -7,6 +7,5 @@ public interface IOperacoes<T> {
 	public void adicionarOuAtualizar(T o);
 
 	/**Remove item do banco*/
-	public void remover(T o);
-	
+	public void remover(T o);	
 }

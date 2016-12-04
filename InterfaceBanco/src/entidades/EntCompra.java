@@ -16,22 +16,20 @@ public class EntCompra {
 	@OneToOne
 	@JoinColumn(name = "id_cliente")
 	private EntCliente cliente;
-	
+
 	@OneToOne
 	@JoinColumn(name = "id_peca")
 	private EntPeca peca;
 	private int quantidade;
 	private String data;
-	private float valor;
-	
-	
+	private double valor;
 
 	public EntCompra() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public EntCompra(EntCliente cliente, EntPeca peca, int quantidade, String data, float valor) {
+	public EntCompra(EntCliente cliente, EntPeca peca, int quantidade, String data, double valor) {
 		super();
 		this.cliente = cliente;
 		this.peca = peca;
@@ -39,44 +37,55 @@ public class EntCompra {
 		this.data = data;
 		this.valor = valor;
 	}
-	
+
 	public int getIdCompra() {
 		return idCompra;
 	}
+
 	public void setIdCompra(int idCompra) {
 		this.idCompra = idCompra;
 	}
+
 	public EntCliente getCliente() {
 		return cliente;
 	}
+
 	public void setCliente(EntCliente cliente) {
 		this.cliente = cliente;
 	}
+
 	public EntPeca getPeca() {
 		return peca;
 	}
+
 	public void setPeca(EntPeca peca) {
 		this.peca = peca;
 	}
+
 	public int getQuantidade() {
 		return quantidade;
 	}
+
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+
 	public String getData() {
 		return data;
 	}
+
 	public void setData(String data) {
 		this.data = data;
 	}
-	public float getValor() {
+
+	public double getValor() {
 		return valor;
 	}
+
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,7 +95,9 @@ public class EntCompra {
 		result = prime * result + idCompra;
 		result = prime * result + ((peca == null) ? 0 : peca.hashCode());
 		result = prime * result + quantidade;
-		result = prime * result + Float.floatToIntBits(valor);
+		long temp;
+		temp = Double.doubleToLongBits(valor);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -118,7 +129,7 @@ public class EntCompra {
 			return false;
 		if (quantidade != other.quantidade)
 			return false;
-		if (Float.floatToIntBits(valor) != Float.floatToIntBits(other.valor))
+		if (Double.doubleToLongBits(valor) != Double.doubleToLongBits(other.valor))
 			return false;
 		return true;
 	}

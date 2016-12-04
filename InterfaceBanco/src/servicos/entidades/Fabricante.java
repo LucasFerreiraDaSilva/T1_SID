@@ -1,15 +1,14 @@
 package servicos.entidades;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@XmlRootElement
+@JsonInclude(Include.NON_EMPTY)
 public class Fabricante {
 	private int idFabricante;
 	private String nome;
 	private String cnpj;
-	
-	
-	
+
 	public Fabricante() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -24,25 +23,32 @@ public class Fabricante {
 	public int getIdFabricante() {
 		return idFabricante;
 	}
+
 	public void setIdFabricante(int idFabricante) {
 		this.idFabricante = idFabricante;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getCnpj() {
 		return cnpj;
 	}
+
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
+
 	@Override
 	public String toString() {
 		return "Fabricante [idFabricante=" + idFabricante + ", nome=" + nome + ", cnpj=" + cnpj + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,6 +58,7 @@ public class Fabricante {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

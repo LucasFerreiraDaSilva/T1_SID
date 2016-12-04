@@ -5,16 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "Fabricante")
 public class EntFabricante {
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idFabricante;
 	private String nome;
 	private String cnpj;
-	
-	
-	
+
 	public EntFabricante() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -29,25 +27,32 @@ public class EntFabricante {
 	public int getIdFabricante() {
 		return idFabricante;
 	}
+
 	public void setIdFabricante(int idFabricante) {
 		this.idFabricante = idFabricante;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getCnpj() {
 		return cnpj;
 	}
+
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
+
 	@Override
 	public String toString() {
 		return "Fabricante [idFabricante=" + idFabricante + ", nome=" + nome + ", cnpj=" + cnpj + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -57,6 +62,7 @@ public class EntFabricante {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

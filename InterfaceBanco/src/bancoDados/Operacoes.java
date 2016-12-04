@@ -30,5 +30,4 @@ public class Operacoes<T> implements IOperacoes<T> {
 		em.remove(o);
 		em.getTransaction().commit();
 	}
-
 }
