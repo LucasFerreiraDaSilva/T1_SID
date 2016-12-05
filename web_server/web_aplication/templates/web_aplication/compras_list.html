@@ -1,0 +1,30 @@
+{% extends "web_aplication/base.html" %}
+{% block content %}
+
+	<div class="container">
+		<h1 align="center">Compras</h1>
+		<form action="/list/compra/" method="post" class="post-form">{% csrf_token %}
+		    <table align="center">
+				<tr bgcolor="#E5E4E2">
+					<th></th>
+					<th>Id</th>
+                    <th>Peça</th>
+                    <th>Cliente</th>
+					<th>Quantidade</th>
+					<th>Data</th>
+				</tr><br>
+				{% for compra in compras %}
+				<tr>
+					<td><input type="checkbox" name="check_compras" value="{{ compra.id }}"></td>
+					<td>{{ compra.id }}</td>
+					<td>{{ compra.peca }}</td>
+                    <td>{{ compra.cliente }}</td>
+                    <td>{{ compra.quantidade }}</td>
+                    <td>{{ compra.data }}</td>
+				</tr>
+				{% endfor %}
+			</table><br>
+			<button align="center" type="submit" class="btn btn-danger">Excluir</button>
+		</form>
+	</div>
+{% endblock %}

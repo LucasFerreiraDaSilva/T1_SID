@@ -1,0 +1,28 @@
+{% extends "web_aplication/base.html" %}
+{% block content %}
+
+	<div class="container">
+		<h1 align="center">Clientes</h1>
+		<form action="/list/peca/" method="post" class="post-form">{% csrf_token %}
+		    <table align="center">
+				<tr bgcolor="#E5E4E2">
+					<th></th>
+					<th>Id</th>
+					<th>Descricao</th>
+					<th>Fabricante</th>
+                    <th>Valor(un)</th>
+				</tr><br>
+				{% for peca in pecas %}
+				<tr>
+					<td><input type="checkbox" name="check_pecas" value="{{ peca.id }}"></td>
+					<td>{{ peca.id }}</td>
+					<td>{{ peca.descricao }}</td>
+					<td>{{ peca.fabricante }}</td>
+                    <td>{{ peca.valor_unit }}</td>
+				</tr>
+				{% endfor %}
+			</table><br>
+			<button align="center" type="submit" class="btn btn-danger">Excluir</button>
+		</form>
+	</div>
+{% endblock %}

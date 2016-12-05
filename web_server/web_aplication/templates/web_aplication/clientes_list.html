@@ -1,0 +1,26 @@
+{% extends "web_aplication/base.html" %}
+{% block content %}
+
+	<div class="container">
+		<h1 align="center">Clientes</h1>
+		<form action="/list/cliente/" method="post" class="post-form">{% csrf_token %}
+		    <table align="center">
+				<tr bgcolor="#E5E4E2">
+					<th></th>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>CPF</th>
+				</tr><br>
+				{% for cliente in clientes %}
+				<tr>
+					<td><input type="checkbox" name="check_clientes" value="{{ cliente.id }}"></td>
+					<td>{{ cliente.id }}</td>
+					<td>{{ cliente.nome }}</td>
+					<td>{{ cliente.cpf }}</td>
+				</tr>
+				{% endfor %}
+			</table><br>
+			<button align="center" type="submit" class="btn btn-danger">Excluir</button>
+		</form>
+	</div>
+{% endblock %}
