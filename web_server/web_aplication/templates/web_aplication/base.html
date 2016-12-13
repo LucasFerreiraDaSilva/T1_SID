@@ -2,11 +2,121 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	{% csrf_token %}
+	{% load static %}
+	<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet"/>
+	<link href="{% static "css/bootstrap-theme.min.css" %}" rel="stylesheet"/>
+	<link href="{% static "css/simple-sidebar.css" %}" rel="stylesheet">
+	<script src="{% static "js/jquery.js" %}"></script>
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+	<style type="text/css">
+        th, td{
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr{
+            bgcolor: #E5E4E2;
+        }
+        .header-page{
+			background-color: #ffcc00;
+    		margin-top: 0;
+			margin-bottom: 30px;
+    		padding: 20px 20px 20px 40px;
+        }
+		.header-page h1, .header-page h1 a, .header-page h1 a:visited, .header-page h1 a:active {
+    		color: #000000;
+    		font-size: 24pt;
+    		text-decoration: none;
+		}
+		input {
+    		width: 300px;
+		}
+		input[type="checkbox"] {
+			width: 20px;
+		}
+		label {
+			width: 150px;
+  			display: inline-block;
+			text-align: right;
+			font-size: 16px;
+			padding: 10px;
+		}
+		select {
+			width: 350px;
+		}
+    </style>
 </head>
 <body>
-    <div>
-        {% block content %}
-		{% endblock %}
+
+	<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand" style="font-size: 18pt;">
+                    <a href="/">
+                        SVA - Parts
+                    </a>
+                </li>
+                <li style="list-style:none;font-size: 14pt;">
+                    <a href="#">Clientes</a>
+					<ul>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/list/cliente/">Listar</a>
+						</li>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/form/cliente/">Cadastrar</a>
+						</li>
+					</ul>
+                </li>
+                <li style="list-style:none;font-size: 14pt;">
+                    <a href="#">Fabricantes</a>
+					<ul>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/list/fabricante/">Listar</a>
+						</li>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/form/fabricante/">Cadastrar</a>
+						</li>
+					</ul>
+                </li>
+                <li style="list-style:none;font-size: 14pt;">
+                    <a href="#">Peças</a>
+					<ul>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/list/peca/">Listar</a>
+						</li>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/form/peca/">Cadastrar</a>
+						</li>
+					</ul>
+                </li>
+                <li style="list-style:none;font-size: 14pt;">
+                    <a href="#">Compras</a>
+					<ul>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/list/compra/">Listar</a>
+						</li>
+						<li style="list-style:none;font-size: 14pt;">
+		                    <a href="/form/compra/">Cadastrar</a>
+						</li>
+					</ul>
+                </li>
+            </ul>
+        </div>
+
+		{% block content %}
+        {% endblock %}
+
     </div>
+
+	<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+	});
+	</script>
+
 </body>
 </html>

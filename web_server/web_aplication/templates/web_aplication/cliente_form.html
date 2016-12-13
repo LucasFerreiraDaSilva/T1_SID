@@ -1,7 +1,13 @@
 {% extends "web_aplication/base.html" %}
 {% block content %}
+<div class="header-page">
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"></a>
+	<h1>Cadastrar cliente</h1>
+</div>
+<div>
     <form action="/form/cliente/" align="center" method="POST" class="post-form">{% csrf_token %}
 	       {{ form.as_p }}
 		    <button type="submit" class="save btn btn-success">Salvar</button>
     </form>
+</div>
 {% endblock %}

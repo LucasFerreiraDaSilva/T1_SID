@@ -2,6 +2,11 @@ from django.shortcuts import render
 from django.contrib import messages
 from .forms import *
 from .models import *
+from .requisicoes import *
+
+def index(request):
+    listFabricante()
+    return render(request, 'web_aplication/index.html', locals())
 
 # VIEWS DE CADASTRO
 
@@ -58,24 +63,27 @@ def cliente_list(request):
 	return render(request, "web_aplication/clientes_list.html", locals())
 
 def fabricante_list(request):
-	fabricantes = Fabricante.objects.all()
-	if request.method == "POST":
-		for fabricante in request.POST.getlist("check_fabricantes"):
-			Fabricante.objects.filter(id=fabricante).delete()
-	return render(request, "web_aplication/fabricantes_list.html", locals())
+    fabricantes = Fabricante.objects.all()
+    listFabricante()
+    if request.method == "POST":
+        for fabricante in request.POST.getlist("check_fabricantes"):
+            Fabricante.objects.filter(id=fabricante).delete()
+    return render(request, "web_aplication/fabricantes_list.html", locals())
 
 def peca_list(request):
-	pecas = Peca.objects.all()
-	if request.method == "POST":
-		for peca in request.POST.getlist("check_pecas"):
-			Peca.objects.filter(id=peca).delete()
-	return render(request, "web_aplication/pecas_list.html", locals())
+    pecas = Peca.objects.all()
+    listPecas()
+    if request.method == "POST":
+        for peca in request.POST.getlist("check_pecas"):
+            Peca.objects.filter(id=peca).delete()
+    return render(request, "web_aplication/pecas_list.html", locals())
 
 def compra_list(request):
-	compras = Compra.objects.all()
-	if request.method == "POST":
-		for compra in request.POST.getlist("check_compras"):
-			Compra.objects.filter(id=compra).delete()
-	return render(request, "web_aplication/compras_list.html", locals())
+    compras = Compra.objects.all()
+    listCompras()
+    if request.method == "POST":
+        for compra in request.POST.getlist("check_compras"):
+            Compra.objects.filter(id=compra).delete()
+    return render(request, "web_aplication/compras_list.html", locals())
 
 # VIEWS DE UPDATE

@@ -1,8 +1,10 @@
 {% extends "web_aplication/base.html" %}
 {% block content %}
-
+<div class="header-page">
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"></a>
+	<h1>Fabricantes cadastrados</h1>
+</div>
 	<div class="container">
-		<h1 align="center">Fabricantes</h1>
 		<form action="/list/fabricante/" method="post" class="post-form">{% csrf_token %}
 		    <table align="center">
 				<tr bgcolor="#E5E4E2">
@@ -20,7 +22,9 @@
 				</tr>
 				{% endfor %}
 			</table><br>
-			<button align="center" type="submit" class="btn btn-danger">Excluir</button>
+			<center>
+				<button align="center" type="submit" class="btn btn-danger">Excluir</button>
+			</center>
 		</form>
 	</div>
 {% endblock %}

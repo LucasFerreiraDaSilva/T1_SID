@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
 
+	url(r'^$', views.index),
+
 	url(r'^form/cliente/$', views.cliente_form),
 	url(r'^form/fabricante/$', views.fabricante_form),
 	url(r'^form/peca/$', views.peca_form),
