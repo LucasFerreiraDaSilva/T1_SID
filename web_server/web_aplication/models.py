@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+import datetime
 
 class Cliente(models.Model):
     nome = models.CharField(max_length=100)
@@ -26,7 +28,7 @@ class Fabricante(models.Model):
 
 class Peca(models.Model):
     descricao = models.CharField(max_length=200)
-    valor_unit = models.FloatField(null=False)
+    valor_unit = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     fabricante = models.ForeignKey(Fabricante, on_delete=models.CASCADE)
     compras = models.ManyToManyField(Cliente, through='Compra')
 

@@ -5,26 +5,32 @@
 	<h1>Fabricantes cadastrados</h1>
 </div>
 	<div class="container">
-		<form action="/list/fabricante/" method="post" class="post-form">{% csrf_token %}
-		    <table align="center">
+		<table align="center">
 				<tr bgcolor="#E5E4E2">
-					<th></th>
 					<th>Id</th>
 					<th>Nome</th>
 					<th>CNPJ</th>
+					<th></th>
+					<th></th>
 				</tr><br>
 				{% for fabricante in fabricantes %}
 				<tr>
-					<td><input type="checkbox" name="check_fabricantes" value="{{ fabricante.id }}"></td>
 					<td>{{ fabricante.id }}</td>
 					<td>{{ fabricante.nome }}</td>
 					<td>{{ fabricante.cnpj }}</td>
+					<td>
+						<form action="/list/fabricante/" method="post" class="post-form">{% csrf_token %}
+							<button style="width:80px;" align="center" value="{{ fabricante.id }}"  name ="id_del" type="submit" class="btn btn-danger">Excluir</button>
+						</form>
+					</td>
+					<td>
+						<form action="/edit/fabricante/" method="get">{% csrf_token %}
+							<button style="width:80px;" type="submit" value="{{ fabricante.id }}" name ="id" class="btn btn-warning">Editar</button>
+						</form>
+					</td>
 				</tr>
 				{% endfor %}
-			</table><br>
-			<center>
-				<button align="center" type="submit" class="btn btn-danger">Excluir</button>
-			</center>
-		</form>
+			</table>
+			<br>
 	</div>
 {% endblock %}

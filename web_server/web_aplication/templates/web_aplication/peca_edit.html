@@ -1,0 +1,26 @@
+{% extends "web_aplication/base.html" %}
+{% block content %}
+<div class="header-page">
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"></a>
+	<h1>Alterar peça</h1>
+</div>
+<div>
+    <form action="/edit/peca/" align="center" method="POST" class="post-form">{% csrf_token %}
+        <b>Descricao:</b>
+        <input type="text" value="{{ peca.descricao }}" name="descricao" />
+		<br><br>
+        <b>Valor unitário:</b>
+        <input type="text" value="{{ peca.valor_unit }}" name="valor_unit" />
+		<br><br>
+        <b>Fabricantes:</b>
+        <select name="id_fabricante" class="i-can-add-my-own-attrs-now">
+            {% for fab in fabricantes %}
+                <option value="{{ fab.id }}" {% if fab.id == pecafab  %} selected {% endif %}>{{ fab.nome }}</option>
+            {% endfor %}
+   		</select>
+		<br><br>
+        <input type="hidden" value= "{{ id }}" name="id"/>
+		<button type="submit" class="save btn btn-success">Salvar</button>
+    </form>
+</div>
+{% endblock %}

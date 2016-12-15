@@ -1,0 +1,29 @@
+{% extends "web_aplication/base.html" %}
+{% block content %}
+<div class="header-page">
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"></a>
+	<h1>Cadastrar cliente</h1>
+</div>
+<div>
+	<form action="/edit/compra/" align="center" method="POST" class="post-form">{% csrf_token %}
+        <b>Quantidade: </b><input type="text" value="{{ compra.quantidade }}" name="quantidade" />
+		<br><br>
+        <b>Data: </b><input type="text" value="{{ compra.data }}" name="data" />
+		<br><br>
+        <b>Cliente: </b><select name="id_cliente" class="i-can-add-my-own-attrs-now">
+            {% for cli in clientes %}
+                <option value="{{ cli.id }}" {% if cli.id == compracli  %} selected {% endif %}>{{ cli.nome }}</option>
+            {% endfor %}
+   		</select>
+		<br><br>
+		<b>Peça: </b><select name="id_peca" class="i-can-add-my-own-attrs-now">
+            {% for peca in pecas %}
+                <option value="{{ peca.id }}" {% if peca.id == comprapeca  %} selected {% endif %}>{{ peca.descricao }}</option>
+            {% endfor %}
+   		</select>
+		<br><br>
+        <input type="hidden" value= "{{ id }}" name="id"/>
+		<button type="submit" class="save btn btn-success">Salvar</button>
+    </form>
+</div>
+{% endblock %}

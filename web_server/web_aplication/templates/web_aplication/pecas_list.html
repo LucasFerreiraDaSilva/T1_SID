@@ -5,28 +5,34 @@
 	<h1>Peças cadastradas</h1>
 </div>
 	<div class="container">
-		<form action="/list/peca/" method="post" class="post-form">{% csrf_token %}
-		    <table align="center">
+		<table align="center">
 				<tr bgcolor="#E5E4E2">
-					<th></th>
 					<th>Id</th>
 					<th>Descricao</th>
 					<th>Fabricante</th>
                     <th>Valor(un)</th>
+					<th></th>
+					<th></th>
 				</tr><br>
 				{% for peca in pecas %}
 				<tr>
-					<td><input type="checkbox" name="check_pecas" value="{{ peca.id }}"></td>
 					<td>{{ peca.id }}</td>
 					<td>{{ peca.descricao }}</td>
 					<td>{{ peca.fabricante }}</td>
                     <td>{{ peca.valor_unit }}</td>
+					<td>
+						<form action="/list/peca/" method="post" class="post-form">{% csrf_token %}
+							<button style="width:80px;" align="center" value="{{ peca.id }}"  name ="id_del" type="submit" class="btn btn-danger">Excluir</button>
+						</form>
+					</td>
+					<td>
+						<form action="/edit/peca/" method="get">{% csrf_token %}
+							<button style="width:80px;" type="submit" value="{{ peca.id }}" name ="id" class="btn btn-warning">Editar</button>
+						</form>
+					</td>
 				</tr>
 				{% endfor %}
-			</table><br>
-			<center>
-				<button align="center" type="submit" class="btn btn-danger">Excluir</button>
-			</center>
-		</form>
+			</table>
+			<br>
 	</div>
 {% endblock %}

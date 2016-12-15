@@ -1,0 +1,19 @@
+{% extends "web_aplication/base.html" %}
+{% block content %}
+<div class="header-page">
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"></a>
+	<h1>Alterar Fabricante</h1>
+</div>
+<div>
+    <form align="center" method="POST" class="post-form">{% csrf_token %}
+        <b>Nome:</b>
+        <input type="text" value="{{ fabricante.nome }}" name="nome" />
+		<br><br>
+        <b>CNPJ:</b>
+        <input type="text" value="{{ fabricante.cnpj }}" name="cnpj" />
+		<br><br>
+		<input type="hidden" value= "{{id}}" name="id"/>
+		<button type="submit" class="save btn btn-success">Salvar</button>
+    </form>
+</div>
+{% endblock %}

@@ -5,26 +5,32 @@
 	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"></a>
 	<h1>Clientes cadastrados</h1>
 </div>
-		<form action="/list/cliente/" method="post" class="post-form">{% csrf_token %}
-		    <table align="center">
-				<tr bgcolor="#E5E4E2">
-					<th></th>
-					<th>Id</th>
-					<th>Nome</th>
-					<th>CPF</th>
-				</tr><br>
-				{% for cliente in clientes %}
-				<tr>
-					<td><input type="checkbox" name="check_clientes" value="{{ cliente.id }}"></td>
-					<td>{{ cliente.id }}</td>
-					<td>{{ cliente.nome }}</td>
-					<td>{{ cliente.cpf }}</td>
-				</tr>
-				{% endfor %}
-			</table><br>
-			<center>
-				<button align="center" type="submit" class="btn btn-danger">Excluir</button>
-			</center>
-		</form>
 
+<table align="center">
+	<tr bgcolor="#E5E4E2">
+
+		<th>Id</th>
+		<th>Nome</th>
+		<th>CPF</th>
+		<th></th>
+		<th></th>
+	</tr><br>
+	{% for cliente in clientes %}
+	<tr>
+		<td>{{ cliente.id }}</td>
+		<td>{{ cliente.nome }}</td>
+		<td>{{ cliente.cpf }}</td>
+		<td>
+			<form action="/list/cliente/" method="post" class="post-form">{% csrf_token %}
+				<button style="width:80px;" align="center" value="{{ cliente.id }}"  name ="id_del" type="submit" class="btn btn-danger">Excluir</button>
+			</form>
+		</td>
+		<td>
+			<form action="/edit/cliente/" method="get">{% csrf_token %}
+				<button style="width:80px;" type="submit" value="{{ cliente.id }}" name ="id" class="btn btn-warning">Editar</button>
+			</form>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
 {% endblock %}
